@@ -1,7 +1,7 @@
 import Tabletop from 'tabletop';
 
-const GET_FEED_DATA_REQUEST = 'GET_FEED_DATA_REQUEST';
-const GET_FEED_DATA_SUCCESS = 'GET_FEED_DATA_SUCCESS';
+export const GET_FEED_DATA_REQUEST = 'GET_FEED_DATA_REQUEST';
+export const GET_FEED_DATA_SUCCESS = 'GET_FEED_DATA_SUCCESS';
 
 const fetchData = (key) => {
 	return new Promise((resolve, reject) => {
