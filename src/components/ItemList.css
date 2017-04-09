@@ -1,0 +1,6 @@
+.RefreshWrapper {
+  display: flex;
+  align-items: center;
+  min-height: 320px;
+  justify-content: space-around;
+}

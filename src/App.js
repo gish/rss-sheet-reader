@@ -4,29 +4,22 @@ import { getFeedData } from './actions/feed-data';
 import ItemList from './components/ItemList';
 import './App.css';
 
-const Button = ({ onClick }) => (
-  <button onClick={onClick}>Fetch data</button>
-);
-
-const mapDispatchToProps = dispatch => {
-  return {
-    onClick: () => dispatch(getFeedData('1r-WPbF-cxZ3VHqHJGQNAC7O947ck5NGyl39ioErWqKc')),
-  };
-};
-
-const WiredButton = connect(null, mapDispatchToProps)(Button);
-
 class App extends Component {
+  componentDidMount() {
+    this.props.getFeedData();
+  }
+
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <WiredButton />
-					<ItemList />
-        </div>
+        <ItemList />
       </div>
     );
   }
 }
 
-export default App;
+const mapDispatchToProps = dispatch => ({
+  getFeedData: () => dispatch(getFeedData('1r-WPbF-cxZ3VHqHJGQNAC7O947ck5NGyl39ioErWqKc')),
+});
+
+export default connect(null, mapDispatchToProps)(App);
