@@ -2,6 +2,7 @@
   "name": "rss-sheet-reader",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://gish.github.io/rss-sheet-reader",
   "dependencies": {
     "html2plaintext": "^1.1.1",
     "material-ui": "^0.17.1",
@@ -14,12 +15,16 @@
     "tabletop": "^1.5.1"
   },
   "devDependencies": {
+    "gh-pages": "^0.12.0",
+    "npm-run-all": "^4.0.2",
     "react-scripts": "0.9.5"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "run-s build",
+    "deploy": "gh-pages -d build"
   }
 }
