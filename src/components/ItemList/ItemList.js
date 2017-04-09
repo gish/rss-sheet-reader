@@ -48,9 +48,18 @@ ItemList.defaultProps = {
   isRequesting: false,
 };
 
+const filterItemsBySource = (state) => {
+  const items = state.feedData.items || [];
+  const filteredSources = state.feedFilter.filteredSources || [];
+  if (filteredSources.length === 0) {
+    return items;
+  }
+  return items.filter((item) => filteredSources.indexOf(item.Feed) !== -1);
+};
+
 const mapStateToProps = state => ({
   isRequesting: state.feedData.isRequesting,
-  items: state.feedData.items,
+  items: filterItemsBySource(state),
 });
 
 export default connect(mapStateToProps)(ItemList);
