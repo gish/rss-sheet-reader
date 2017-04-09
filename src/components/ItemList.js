@@ -26,13 +26,14 @@ const ItemList = ({ items, isRequesting }) => (
     }
     <List style={{padding: 0}}>
       {items.reverse().map((item) => {
-        const { Title, Content } = item;
+        const { Title, Content, Url } = item;
         const secondaryContent = htmlToText(Content);
         return (
           <div key={Title}>
             <ListItem
               primaryText={Title}
               secondaryText={secondaryContent}
+              onTouchTap={() => window.location = Url}
             />
             <Divider />
           </div>
