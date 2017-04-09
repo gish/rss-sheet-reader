@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getFeedData } from './actions/feed-data';
+import AppBar from 'material-ui/AppBar';
 import ItemList from './components/ItemList';
 import './App.css';
 
@@ -12,6 +13,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <AppBar className="AppBar" title="RSS Sheet Reader" iconElementLeft={<span />} />
         <ItemList />
       </div>
     );
