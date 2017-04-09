@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getFeedData } from './actions/feed-data';
 import AppBar from 'material-ui/AppBar';
-import ItemList from './components/ItemList';
+import { showMenu } from './actions/menu';
+import ItemList from './components/ItemList/ItemList';
+import Menu from './components/Menu/Menu';
 import './App.css';
 
 class App extends Component {
@@ -13,7 +15,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <AppBar className="AppBar" title="RSS Sheet Reader" iconElementLeft={<span />} />
+        <Menu />
+        <AppBar
+          className="AppBar"
+          title="RSS Sheet Reader"
+          onLeftIconButtonTouchTap={this.props.showMenu}/>
         <ItemList />
       </div>
     );
@@ -22,6 +28,7 @@ class App extends Component {
 
 const mapDispatchToProps = dispatch => ({
   getFeedData: () => dispatch(getFeedData('1r-WPbF-cxZ3VHqHJGQNAC7O947ck5NGyl39ioErWqKc')),
+  showMenu: () => dispatch(showMenu()),
 });
 
 export default connect(null, mapDispatchToProps)(App);
