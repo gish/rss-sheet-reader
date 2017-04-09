@@ -8,7 +8,7 @@ import htmlToText from 'html2plaintext';
 const ItemList = ({ items }) => (
   <Paper zDepth={1}>
     <List style={{padding: 0}}>
-      {items.map((item) => {
+      {items.reverse().map((item) => {
         const { Title, Content } = item;
         const secondaryContent = htmlToText(Content);
         return (
