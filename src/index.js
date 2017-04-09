@@ -2,7 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware, compose } from 'redux'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import thunk from 'redux-thunk';
+import injectTapEventPlugin from 'react-tap-event-plugin';
 import App from './App';
 import reducer from './reducers';
 import './index.css';
@@ -14,9 +16,13 @@ if (process.env.NODE_ENV === 'development') {
 }
 const store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)));
 
+injectTapEventPlugin();
+
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+		<MuiThemeProvider>
+			<App />
+		</MuiThemeProvider>
   </Provider>,
   document.getElementById('root')
 );

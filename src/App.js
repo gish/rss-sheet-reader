@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getFeedData } from './actions/feed-data';
+import ItemList from './components/ItemList';
 import './App.css';
 
 const Button = ({ onClick }) => (
@@ -21,6 +22,7 @@ class App extends Component {
       <div className="App">
         <div className="App-header">
           <WiredButton />
+					<ItemList />
         </div>
       </div>
     );
