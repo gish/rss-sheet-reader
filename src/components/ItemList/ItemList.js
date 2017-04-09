@@ -52,7 +52,7 @@ const filterItemsBySource = (state) => {
   const items = state.feedData.items || [];
   const filteredSources = state.feedFilter.filteredSources || [];
   if (filteredSources.length === 0) {
-    return items;
+    return [...items];
   }
   return items.filter((item) => filteredSources.indexOf(item.Feed) !== -1);
 };

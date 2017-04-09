@@ -1,4 +1,5 @@
 import { SHOW_MENU, HIDE_MENU } from '../actions/menu';
+
 const reducer = (state = {}, action) => {
   const type = action.type;
 
