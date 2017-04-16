@@ -13,7 +13,9 @@ const reducer = (state = {}, action) => {
       return {
         ...state,
         isRequesting: false,
-        items: data,
+        items: data.reduce((joined, feed) => {
+          return joined.concat(feed);
+        }, []),
       };
     default:
       return state;

@@ -13,9 +13,9 @@ const fetchData = (key) => {
 	});
 };
 
-const getFeedDataRequest = (key) => ({
+const getFeedDataRequest = (keys) => ({
   type: GET_FEED_DATA_REQUEST,
-  data: key,
+  data: keys,
 });
 
 const getFeedDataSuccess = (data) => ({
@@ -23,9 +23,9 @@ const getFeedDataSuccess = (data) => ({
   data,
 });
 
-export const getFeedData = key => dispatch => {
-  dispatch(getFeedDataRequest(key));
+export const getFeeds = keys => dispatch => {
+  dispatch(getFeedDataRequest(keys));
 
-  return fetchData(key)
-    .then(data => dispatch(getFeedDataSuccess(data)));
+  return Promise.all(keys.map(fetchData))
+    .then(data => dispatch(getFeedDataSuccess(data)))
 }
