@@ -53,8 +53,8 @@ const joinFeedItems = feeds =>
       .reduce((items, feedItems) => items.concat(feedItems), [])
 
 const filterItemsBySource = (state) => {
-  const feeds = state.feedData.feeds || [];
-  const filteredSources = state.feedFilter.filteredSources || [];
+  const feeds = state.feedData.feeds;
+  const filteredSources = state.feedFilter.filteredSources;
   const filteredFeeds = feeds.filter(feed => filteredSources.includes(feed.title));
 
   if (filteredSources.length === 0) {

@@ -14,7 +14,18 @@ let composeEnhancers = compose;
 if (process.env.NODE_ENV === 'development') {
 	composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 }
-const store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)));
+const initialState = {
+  feedData: {
+    isRequesting: false,
+    feeds: [],
+  },
+  feedFilter: {
+    filteredSources: [],
+  },
+  menu: { visible: false },
+};
+
+const store = createStore(reducer, initialState, composeEnhancers(applyMiddleware(thunk)));
 
 injectTapEventPlugin();
 
