@@ -39,13 +39,9 @@ const Menu = ({
 );
 
 const selectFeeds = (state) => {
-  const items = state.feedData.items || [];
+  const feeds = state.feedData.feeds || [];
+  const feedNames = feeds.map(feed => feed.title).sort();
   const filteredSources = state.feedFilter.filteredSources || [];
-  const feedNames = items.reduce((feedNames, item) => {
-    const { Feed } = item;
-    return feedNames.indexOf(Feed) === -1 ? [...feedNames, Feed] : feedNames;
-  }, [])
-  .sort();
 
   return feedNames.map((name) => ({
     name,

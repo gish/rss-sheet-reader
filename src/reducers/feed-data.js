@@ -13,9 +13,11 @@ const reducer = (state = {}, action) => {
       return {
         ...state,
         isRequesting: false,
-        items: data.reduce((joined, feed) => {
-          return joined.concat(feed);
-        }, []),
+        feeds: data.map((items) => ({
+            title: items[0].Feed,
+            items: items,
+          })
+        ),
       };
     default:
       return state;

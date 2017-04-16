@@ -48,13 +48,20 @@ ItemList.defaultProps = {
   isRequesting: false,
 };
 
+const joinFeedItems = feeds =>
+  feeds.map(feed => feed.items)
+      .reduce((items, feedItems) => items.concat(feedItems), [])
+
 const filterItemsBySource = (state) => {
-  const items = state.feedData.items || [];
+  const feeds = state.feedData.feeds || [];
   const filteredSources = state.feedFilter.filteredSources || [];
+  const filteredFeeds = feeds.filter(feed => filteredSources.includes(feed.title));
+
   if (filteredSources.length === 0) {
-    return [...items];
+    return joinFeedItems(feeds);
   }
-  return items.filter((item) => filteredSources.indexOf(item.Feed) !== -1);
+
+  return joinFeedItems(filteredFeeds);
 };
 
 const mapStateToProps = state => ({
