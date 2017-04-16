@@ -26,14 +26,14 @@ const ItemList = ({ items, isRequesting }) => (
     }
     <List style={{padding: 0}}>
       {items.reverse().map((item) => {
-        const { Title, Content, Url } = item;
-        const secondaryContent = htmlToText(Content);
+        const { title, content, url } = item;
+        const secondaryContent = htmlToText(content);
         return (
-          <div key={Title}>
+          <div key={title}>
             <ListItem
-              primaryText={Title}
+              primaryText={title}
               secondaryText={secondaryContent}
-              onTouchTap={() => window.location = Url}
+              onTouchTap={() => window.location = url}
             />
             <Divider />
           </div>
@@ -52,7 +52,7 @@ const joinFeedItems = feeds =>
   feeds.map(feed => feed.items)
       .reduce((items, feedItems) => items.concat(feedItems), [])
 
-const filterItemsBySource = (state) => {
+const selectItemsByFilteredSource = (state) => {
   const feeds = state.feedData.feeds;
   const filteredSources = state.feedFilter.filteredSources;
   const filteredFeeds = feeds.filter(feed => filteredSources.includes(feed.title));
@@ -64,9 +64,15 @@ const filterItemsBySource = (state) => {
   return joinFeedItems(filteredFeeds);
 };
 
+const sortItemsByDate = (items) => {
+  const getTime = item => (new Date(item.date)).getTime();
+  const compareTimestamp = (a, b) => getTime(a) - getTime(b);
+  return items.sort(compareTimestamp);
+};
+
 const mapStateToProps = state => ({
   isRequesting: state.feedData.isRequesting,
-  items: filterItemsBySource(state),
+  items: sortItemsByDate(selectItemsByFilteredSource(state)),
 });
 
 export default connect(mapStateToProps)(ItemList);

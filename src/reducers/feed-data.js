@@ -1,4 +1,7 @@
+import moment from 'moment';
 import { GET_FEED_DATA_SUCCESS, GET_FEED_DATA_REQUEST } from './../actions/feed-data';
+
+const parseDate = date => moment(date, 'MMMM DD, YYYY at HH:mmA').toDate();
 
 const reducer = (state = {}, action) => {
   const { data, type } = action;
@@ -13,11 +16,17 @@ const reducer = (state = {}, action) => {
       return {
         ...state,
         isRequesting: false,
-        feeds: data.map((items) => ({
+        feeds: data.map(items => ({
             title: items[0].Feed,
-            items: items,
-          })
-        ),
+            items: items.map(item => ({
+              date: parseDate(item.Date),
+              title: item.Title,
+              url: item.Url,
+              content: item.Content,
+              feed: item.Feed,
+              feedUrl: item.FeedUrl,
+            })),
+        })),
       };
     default:
       return state;
