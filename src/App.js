@@ -8,8 +8,8 @@ import Menu from './components/Menu/Menu';
 import './App.css';
 
 const feeds = [
-  '13WhsgtS2MdMEtRFNujk6lCmhqzADzyuIdDXqX2Sd788',
-  '1r-WPbF-cxZ3VHqHJGQNAC7O947ck5NGyl39ioErWqKc',
+  '1FLU5BSSzWRVEHJG8JQVnkrJ0Urway4_XviG8TcxU-ew', // T-nation
+  '1PMae3cRFUQeIVTaxgqwjEBLudRSDxMbysMTwjG3rp1o', // Techcrunch
 ];
 
 class App extends Component {
