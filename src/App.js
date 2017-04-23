@@ -11,6 +11,7 @@ const feeds = [
   '1FLU5BSSzWRVEHJG8JQVnkrJ0Urway4_XviG8TcxU-ew', // T-nation
   '1PMae3cRFUQeIVTaxgqwjEBLudRSDxMbysMTwjG3rp1o', // Techcrunch
   '1o6AlGND48raIGen-o1MG7WO11J6vfEOcuRf8GN9dias', // Robbans bästa
+  '1AsazlUQ8XhKm2yBSKylOkcETdi_r9ER935AEHYQHnXY', // Tjock
 ];
 
 class App extends Component {
